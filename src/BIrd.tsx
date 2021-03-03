@@ -70,7 +70,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
                 fill={"#ffff18"}
                 fillOpacity={1}
                 stroke={"#f60000"}
-                strokeWidth={2}
+                strokeWidth={0.264583}
                 strokeLinecap={"butt"}
                 strokeLinejoin={"miter"}
                 strokeMiterlimit={4}
