@@ -1,17 +1,21 @@
 import React from 'react';
 
-export interface BirdState {
+export interface BirdProps {
     wingScale: number; // High tips: +1, low tips -1. (More or less…)
 }
+export interface BirdState {
+    wingScale: number; // High tips: +1, low tips -1. (More or less…)
+    wingColor: string; // depending of which side of the wing is visible.
+}
 
-export class Bird extends React.Component<BirdState, BirdState>{
+export class Bird extends React.Component<BirdProps, BirdState>{
     readonly wingColorBelow = "#e0efff";
-    readonly wingColorAbove = "#e0efff";
-    wingColor = this.wingColorBelow;
+    readonly wingColorAbove = "#650fa8";
     constructor(props:BirdState) {
         super(props);
         this.state = {
-            wingScale: this.props.wingScale
+            wingScale: this.props.wingScale,
+            wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
         }
     }
     render(){
@@ -94,7 +98,7 @@ export class Bird extends React.Component<BirdState, BirdState>{
                             d="m 158.136,100.70992 33.6414,6.85685 -33.6414,0.21427" />
 
                     <path
-                        fill={this.wingColor}
+                        fill={this.state.wingColor}
                         fillOpacity={1}
                         stroke={"#000000"}
                         strokeWidth = {0.264583}
