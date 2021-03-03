@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Bird} from "./BIrd";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Bird wingScale={+1.00}/>
+
+        <Bird wingScale={+0.90}/>
+        <Bird wingScale={+0.80}/>
+        <Bird wingScale={+0.70}/>
+        <Bird wingScale={+0.60}/>
+        <Bird wingScale={+0.50}/>
+        <Bird wingScale={+0.40}/>
+        <Bird wingScale={+0.30}/>
+        <Bird wingScale={+0.20}/>
+        <Bird wingScale={+0.10}/>
+        <Bird wingScale={+0.00}/>
+        <Bird wingScale={-0.05}/>
+        <Bird wingScale={-0.15}/>
+        <Bird wingScale={-1.00}/>
     </div>
   );
 }
