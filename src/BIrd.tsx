@@ -1,3 +1,4 @@
+/* eslint no-useless-return: "off" */
 import React from 'react';
 
 export interface BirdState {
@@ -5,6 +6,9 @@ export interface BirdState {
 }
 
 export class Bird extends React.Component<BirdState, BirdState>{
+    readonly wingColorBelow = "#e0efff";
+    readonly wingColorAbove = "#e0efff";
+    wingColor = this.wingColorBelow;
     constructor(props:BirdState) {
         super(props);
         this.state = {
@@ -12,7 +16,9 @@ export class Bird extends React.Component<BirdState, BirdState>{
         }
     }
     render(){
-        let translate = 116*(1-(this.props.wingScale))
+
+        let translate = 116*(1-(this.props.wingScale));
+        /* eslint no-useless-return: "off" */
         let result =
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +95,7 @@ export class Bird extends React.Component<BirdState, BirdState>{
                             d="m 158.136,100.70992 33.6414,6.85685 -33.6414,0.21427" />
 
                     <path
-                        fill={"#e0efff"}
+                        fill={this.wingColor}
                         fillOpacity={1}
                         stroke={"#000000"}
                         strokeWidth = {0.264583}
