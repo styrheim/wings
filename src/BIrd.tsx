@@ -1,4 +1,3 @@
-/* eslint no-useless-return: "off" */
 import React from 'react';
 
 export interface BirdState {
