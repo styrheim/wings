@@ -21,8 +21,14 @@ export class Bird extends React.Component<BirdProps, BirdState>{
             wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
         }
     }
-    render(){
 
+    public update(){
+        // Updates the age, which most likely changes the state and causes a call to render()
+        this.age = Date.now() - this.creationTime;
+        this.setState({wingScale: Math.sin(this.age/5000)});
+    }
+
+    render(){
         let translate = 116*(1-(this.props.wingScale));
         return <svg
         xmlns="http://www.w3.org/2000/svg"
