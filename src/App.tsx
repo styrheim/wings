@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Bird, BirdProps, BirdState} from "./Bird";
+import {Bird} from "./Bird";
 
 
 interface AppProps{}

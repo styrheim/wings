@@ -22,9 +22,6 @@ export class Bird extends React.Component<BirdProps, BirdState>{
         }
         this.tookOff = Date.now(); // Initialize to 0, if initially not flying.
     }
-    handleTick(){
-        let age = Date.now() - this.tookOff;
-    }
 
     public test01(){
         return(42);
