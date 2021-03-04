@@ -6,26 +6,26 @@ export interface BirdProps {
 export interface BirdState {
     wingScale: number; // High tips: +1, low tips -1. (More or less…)
     wingColor: string; // depending of which side of the wing is visible.
+    age: number;
 }
 
 export class Bird extends React.Component<BirdProps, BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
-    readonly creationTime:number;
     age = 0; // Not a state - only indirectly does it require re-rendering
     constructor(props:BirdState) {
         super(props);
-        this.creationTime = Date.now();
         this.state = {
             wingScale: this.props.wingScale,
-            wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
+            wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove,
+            age: 0
         }
     }
 
-    public update(){
+    update(){
         // Updates the age, which most likely changes the state and causes a call to render()
-        this.age = Date.now() - this.creationTime;
-        this.setState({wingScale: Math.sin(this.age/5000)});
+        // TODO
+
     }
 
     render(){
