@@ -35,7 +35,7 @@ class App extends React.Component<AppProps, AppState>{
     run(){
         console.log("App.run");
         console.log(this.state.flightTime.toString());
-        this.setState({flightTime: 0});
+        this.setState({flightTime: Date.now() - this.takeOff});
         console.log(this.state.flightTime.toString());
         setTimeout(this.run.bind(this),500);
     }
