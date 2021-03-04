@@ -24,7 +24,7 @@ class App extends React.Component<AppProps, AppState>{
         console.log("App.render()");
         console.log(this.state.flightTime.toString());
         return(
-        <div className="App">
+        <div className="App" >
             <br/>
             <div>
                 <Bird flightTime={this.state.flightTime} period={2000}/>

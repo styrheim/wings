@@ -25,10 +25,12 @@ export class Bird extends React.Component<BirdProps>{
         return <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        id="svg9">
+        id="svg9"
+        width={200}
+        viewBox={"-50 0 300 300"}>
         <g
             id="layer1"
-            transform="translate(-25,-1)">
+            transform="translate(-25,20)">
             {/* <!-- body --> */}
             {"<!-- body debug comment -->"}
             <path
