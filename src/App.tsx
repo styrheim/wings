@@ -7,7 +7,7 @@ const tick = new Event("tick");
 
 
 function App() {
-    run(); //Prevents App from being a JSX component ?
+    run();
     return(
     <div className="App">
         <br/>
