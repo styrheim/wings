@@ -20,6 +20,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
             wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove,
             age: 0
         }
+        this.handleTick = this.handleTick.bind(this);
     }
     handleTick(){
 
