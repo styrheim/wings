@@ -32,6 +32,9 @@ class App extends React.Component<AppProps, AppState>{
             <div>
                 <Bird flightTime={this.state.flightTime} period={2000} width={300}/>
             </div>
+            <div>
+                <Bird flightTime={this.state.flightTime} period={500} width={200}/>
+            </div>
         </div>);
     }
 
