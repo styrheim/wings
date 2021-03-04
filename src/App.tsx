@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import {Bird} from "./BIrd";
+import {Bird} from "./Bird";
 
 let theBird = <Bird wingScale={+1.00}/>
-const tick = new Event("tick");
 
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
 }
 
 function run(){
-    dispatchEvent(tick);
     // TODO repeat
 }
 

@@ -19,11 +19,13 @@ export class Bird extends React.Component<BirdProps, BirdState>{
             wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
         }
         this.tookOff = Date.now(); // Initialize to 0, if initially not flying.
-        this.handleTick = this.handleTick.bind(this);
     }
     handleTick(){
-
         let age = Date.now() - this.tookOff;
+    }
+
+    public test01(){
+        return(42);
     }
 
     render(){
