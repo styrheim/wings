@@ -6,7 +6,6 @@ export interface BirdProps {
 export interface BirdState {
     wingScale: number; // High tips: +1, low tips -1. (More or less…)
     wingColor: string; // depending of which side of the wing is visible.
-    age: number;
 }
 
 export class Bird extends React.Component<BirdProps, BirdState>{
@@ -17,8 +16,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
         super(props);
         this.state = {
             wingScale: this.props.wingScale,
-            wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove,
-            age: 0
+            wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
         }
         this.handleTick = this.handleTick.bind(this);
     }
