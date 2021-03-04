@@ -11,17 +11,19 @@ export interface BirdState {
 export class Bird extends React.Component<BirdProps, BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
-    age = 0; // Not a state - only indirectly does it require re-rendering
+    tookOff: number;    // time of take-off in ms.
     constructor(props:BirdState) {
         super(props);
         this.state = {
             wingScale: this.props.wingScale,
             wingColor: this.props.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
         }
+        this.tookOff = Date.now(); // Initialize to 0, if initially not flying.
         this.handleTick = this.handleTick.bind(this);
     }
     handleTick(){
 
+        let age = Date.now() - this.tookOff;
     }
 
 
