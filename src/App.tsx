@@ -14,12 +14,13 @@ class App  extends React.Component<AppProps, AppState>{
         super(props);
         this.takeOff = Date.now();
         this.setState({flightTime: 0});
+        this.run();
     }
 
 
 
     render() {
-        this.run();
+        console.log("App.render()")
         return(
         <div className="App">
             <br/>
@@ -30,7 +31,9 @@ class App  extends React.Component<AppProps, AppState>{
     }
 
     run(){
-        // TODO repeat
+        console.log("App.run")
+        this.setState({flightTime: 0});
+        setTimeout(this.run.bind(this),20000);
     }
 }
 

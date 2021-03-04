@@ -28,6 +28,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
     }
 
     render(){
+        console.log("Bird.render()")
         let translate = 116*(1-(this.state.wingScale));
         return <svg
         xmlns="http://www.w3.org/2000/svg"
