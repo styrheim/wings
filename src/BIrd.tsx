@@ -21,6 +21,10 @@ export class Bird extends React.Component<BirdProps, BirdState>{
             age: 0
         }
     }
+    handleTick(){
+
+    }
+
 
     update(){
         // Updates the age, which most likely changes the state and causes a call to render()
