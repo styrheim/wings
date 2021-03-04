@@ -26,13 +26,6 @@ export class Bird extends React.Component<BirdProps, BirdState>{
         let age = Date.now() - this.tookOff;
     }
 
-
-    update(){
-        // Updates the age, which most likely changes the state and causes a call to render()
-        // TODO
-
-    }
-
     render(){
         let translate = 116*(1-(this.props.wingScale));
         return <svg
