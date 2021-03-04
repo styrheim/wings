@@ -10,6 +10,14 @@ interface AppState{
 }
 
 class App  extends React.Component<AppProps, AppState>{
+    takeOff: number; // ms since start of flight
+    constructor(props: AppProps){
+        super(props);
+        this.takeOff = Date.now();
+        this.setState({flightTime: 0});
+    }
+
+
 
     render() {
         this.run();
