@@ -16,7 +16,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
     constructor(props:BirdProps) {
         super(props);
         this.takeOff = Date.now();
-        let wingScale = 0.5; // TODO compute from flightTime
+        let wingScale = Math.cos(0);
         this.state = {
             flightTime: Date.now() - this.takeOff,
             wingScale: wingScale,
