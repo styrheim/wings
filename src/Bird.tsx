@@ -14,10 +14,11 @@ export class Bird extends React.Component<BirdProps, BirdState>{
     tookOff: number;    // time of take-off in ms.
     constructor(props:BirdProps) {
         super(props);
+        let wingScale = 0.5; // TODO compute from flightTime
         this.state = {
-            wingScale: 0.5, // TODO compute it
-            //wingColor: this.state.wingScale>0 ? this.wingColorBelow : this.wingColorAbove
-            wingColor: this.wingColorAbove
+            wingScale: wingScale,
+            wingColor: wingScale>0 ? this.wingColorBelow : this.wingColorAbove
+            // wingColor: this.wingColorAbove
         }
         this.tookOff = Date.now(); // Initialize to 0, if initially not flying.
     }
