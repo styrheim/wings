@@ -23,6 +23,7 @@ export class Bird extends React.Component<BirdProps>{
         let wingScale = Math.cos(this.props.flightTime / this.props.period);
         let wingColor = wingScale>0 ? this.wingColorBelow : this.wingColorAbove;
         let translate = 116*(1-wingScale);
+        let wobble = translate * (-0.12);
         return <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -31,7 +32,7 @@ export class Bird extends React.Component<BirdProps>{
         viewBox={"-50 0 300 300"}>
         <g
             id="layer1"
-            transform="translate(-25,20)">
+            transform={'translate(-25,20)'}>
             {/* <!-- body --> */}
             {"<!-- body debug comment -->"}
             <path
