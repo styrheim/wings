@@ -1,10 +1,10 @@
 import React from 'react';
 
 export interface BirdProps {
-    flightTime: number; // Use to compute wingScale and implicitly wingColor
     period: number;     // duration in ms of each wing beat.
 }
 export interface BirdState {
+    flightTime: number; // Use to compute wingScale and implicitly wingColor
     wingScale: number; // High tips: +1, low tips -1. (More or less…)
     wingColor: string; // depending of which side of the wing is visible.
 }
@@ -12,16 +12,17 @@ export interface BirdState {
 export class Bird extends React.Component<BirdProps, BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
-    tookOff: number;    // time of take-off in ms.
+    readonly takeOff: number;    // time of take-off in ms.
     constructor(props:BirdProps) {
         super(props);
+        this.takeOff = Date.now();
         let wingScale = 0.5; // TODO compute from flightTime
         this.state = {
+            flightTime: Date.now() - this.takeOff,
             wingScale: wingScale,
             wingColor: wingScale>0 ? this.wingColorBelow : this.wingColorAbove
             // wingColor: this.wingColorAbove
         }
-        this.tookOff = Date.now(); // Initialize to 0, if initially not flying.
     }
 
     public test01(){

@@ -17,15 +17,13 @@ class App  extends React.Component<AppProps, AppState>{
         this.run();
     }
 
-
-
     render() {
         //console.log("App.render()")
         return(
         <div className="App">
             <br/>
             <div>
-              <Bird flightTime={0} period={2000}/>
+              <Bird  period={2000}/>
             </div>
         </div>);
     }
