@@ -17,7 +17,7 @@ class App extends React.Component<AppProps, AppState>{
         super(props);
         console.log("App.constructor")
         this.takeOff = Date.now();
-        //this.run();
+        this.run();
     }
 
     render() {
