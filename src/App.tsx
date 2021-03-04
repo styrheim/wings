@@ -20,20 +20,20 @@ class App  extends React.Component<AppProps, AppState>{
 
 
     render() {
-        console.log("App.render()")
+        //console.log("App.render()")
         return(
         <div className="App">
             <br/>
             <div>
-              <Bird flightTime={0}/>
+              <Bird flightTime={0} period={2000}/>
             </div>
         </div>);
     }
 
     run(){
-        console.log("App.run")
+        //console.log("App.run")
         this.setState({flightTime: 0});
-        setTimeout(this.run.bind(this),20000);
+        setTimeout(this.run.bind(this),500);
     }
 }
 

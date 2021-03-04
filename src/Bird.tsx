@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface BirdProps {
     flightTime: number; // Use to compute wingScale and implicitly wingColor
+    period: number;     // duration in ms of each wing beat.
 }
 export interface BirdState {
     wingScale: number; // High tips: +1, low tips -1. (More or less…)
@@ -28,7 +29,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
     }
 
     render(){
-        console.log("Bird.render()")
+        //console.log("Bird.render()")
         let translate = 116*(1-(this.state.wingScale));
         return <svg
         xmlns="http://www.w3.org/2000/svg"
