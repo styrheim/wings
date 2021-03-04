@@ -3,6 +3,7 @@ import React from 'react';
 export interface BirdProps {
     flightTime: number; // ms since take-off
     period: number;     // duration in ms of each wing beat.
+    width: number       // width of the SVG imgae - wider than the bird.
 }
 
 
@@ -26,7 +27,7 @@ export class Bird extends React.Component<BirdProps>{
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         id="svg9"
-        width={200}
+        width={this.props.width}
         viewBox={"-50 0 300 300"}>
         <g
             id="layer1"
