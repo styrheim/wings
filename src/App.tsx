@@ -4,6 +4,11 @@ import {Bird} from "./Bird";
 
 let theBird = <Bird wingScale={+1.00}/>
 
+interface AppState{
+    flightTime: number; //ms since take-off
+}
+
+
 
 function App() {
     run();
