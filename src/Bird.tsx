@@ -1,37 +1,27 @@
 import React from 'react';
 
 export interface BirdProps {
+    flightTime: number; // ms since take-off
     period: number;     // duration in ms of each wing beat.
 }
-export interface BirdState {
-    flightTime: number; // Use to compute wingScale and implicitly wingColor
-    wingScale: number; // High tips: +1, low tips -1. (More or less…)
-    wingColor: string; // depending of which side of the wing is visible.
-}
 
-export class Bird extends React.Component<BirdProps, BirdState>{
+
+export class Bird extends React.Component<BirdProps>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
-    readonly takeOff: number;    // time of take-off in ms.
     constructor(props:BirdProps) {
         super(props);
-        this.takeOff = Date.now();
-        let wingScale = Math.cos(0);
         this.state = {
-            flightTime: Date.now() - this.takeOff,
-            wingScale: wingScale,
-            wingColor: wingScale>0 ? this.wingColorBelow : this.wingColorAbove
-            // wingColor: this.wingColorAbove
+            wingScale: Math.cos(this.props.flightTime)
         }
-    }
-
-    public test01(){
-        return(42);
     }
 
     render(){
         //console.log("Bird.render()")
-        let translate = 116*(1-(this.state.wingScale));
+        // Computing new state with local variables, because sequence is essential.
+        let wingScale = Math.cos(this.props.flightTime / this.props.period);
+        let wingColor = wingScale>0 ? this.wingColorBelow : this.wingColorAbove;
+        let translate = 116*(1-wingScale);
         return <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -109,7 +99,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
                 d="m 158.136,100.70992 33.6414,6.85685 -33.6414,0.21427"/>
 
             <path
-                fill={this.state.wingColor}
+                fill={wingColor}
                 fillOpacity={1}
                 stroke={"#000000"}
                 strokeWidth={0.264583}
@@ -119,7 +109,7 @@ export class Bird extends React.Component<BirdProps, BirdState>{
                 strokeDasharray={"none"}
                 strokeOpacity={1}
                 d="M 67.711351,116.0 H 106.28111 C 103.28124,5.1426344 44.998051,0 44.998051,1.7142115 80.139384,64.28293 67.711351,116.13782 67.711351,116.13782 Z"
-                transform={`translate(0,${translate}) scale(1,${this.state.wingScale})`}
+                transform={`translate(0,${translate}) scale(1,${wingScale})`}
                 id="wing"/>
         </g>
     </svg>;
