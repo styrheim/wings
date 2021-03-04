@@ -37,7 +37,7 @@ class App extends React.Component<AppProps, AppState>{
         console.log(this.state.flightTime.toString());
         this.setState({flightTime: 0});
         console.log(this.state.flightTime.toString());
-        // setTimeout(this.run.bind(this),500);
+        setTimeout(this.run.bind(this),500);
     }
 }
 
