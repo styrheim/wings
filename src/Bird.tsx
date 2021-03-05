@@ -21,6 +21,7 @@ export class Bird extends React.Component<BirdProps>{
         //console.log("Bird.render()")
         // Computing new state with local variables, because sequence is essential.
         let wingScale = Math.cos(this.props.flightTime / this.props.period);
+        wingScale = wingScale*wingScale*wingScale;
         let wingColor = wingScale>0 ? this.wingColorBelow : this.wingColorAbove;
         let translate = 116*(1-wingScale);
         let wobble = translate * (-0.06);
