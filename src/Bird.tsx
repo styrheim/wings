@@ -6,37 +6,41 @@ export interface BirdProps {
     width: number       // width of the SVG image - wider than the bird.
 }
 export interface BirdState{
-    wingScale: number;
-    position:  number;
-    speed: number;
-    acceleration: number;
-    lastUpdate: number
+    position: number;
 }
-
 
 export class Bird extends React.Component<BirdProps,BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
+    position: number;
+    speed: number;
+    acceleration: number;
+    lastUpdate: number;
     constructor(props:BirdProps) {
         super(props);
-        this.state = {
-            wingScale: Math.cos(this.props.flightTime),
-            position: 100,
-            speed: 0,
-            acceleration: -0.1,
-            lastUpdate: this.props.flightTime
-        }
+        this.position = 100;
+        this.state = {position: this.position};
+        this.speed = 0;
+        this.acceleration = -0.5;
+        this.lastUpdate = this.props.flightTime;
+    }
+
+    static wingScale(flightTime: number, period: number){
+        return  Math.cos(flightTime / period);
     }
 
     render(){
         //console.log("Bird.render()")
         // Computing new state with local variables, because sequence is essential.
-        let wingScale = Math.cos(this.props.flightTime / this.props.period);
-        wingScale = Math.sign(wingScale)*wingScale*wingScale;
+        let wingScale = Bird.wingScale(this.props.flightTime, this.props.period);
         let wingColor = wingScale>0 ? this.wingColorBelow : this.wingColorAbove;
         let translate = 116*(1-wingScale);
         let wobble = translate * (-0.06);
-        //TODO set lastUpdate;
+        let interval = this.props.flightTime - this.lastUpdate;
+        this.speed = this.speed + interval*this.acceleration;
+        console.log("speed: " + this.speed.toString());
+        this.position = this.state.position + interval*this.speed;
+
         return <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -45,7 +49,7 @@ export class Bird extends React.Component<BirdProps,BirdState>{
         viewBox={"-50 0 300 800"}>
         <g
             id="layer1"
-            transform={`translate(-25,${20 + wobble + this.state.position})`}>
+            transform={`translate(-25,${20 + wobble + this.position})`}>
             {/* <!-- body --> */}
             {"<!-- body debug comment -->"}
             <path
@@ -130,5 +134,11 @@ export class Bird extends React.Component<BirdProps,BirdState>{
                 id="wing"/>
         </g>
     </svg>;
+    }
+
+    componentDidMount(){
+        this.state = {
+            position: this.position
+        }
     }
 }

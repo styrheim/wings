@@ -21,8 +21,8 @@ class App extends React.Component<AppProps, AppState>{
     }
 
     render() {
-        console.log("App.render()");
-        console.log(this.state.flightTime.toString());
+        // console.log("App.render()");
+        // console.log(this.state.flightTime.toString());
         return(
         <div className="App" >
             <div>
@@ -32,10 +32,10 @@ class App extends React.Component<AppProps, AppState>{
     }
 
     run(){
-        console.log("App.run");
-        console.log(this.state.flightTime.toString());
+        // console.log("App.run");
+        // console.log(this.state.flightTime.toString());
         this.setState({flightTime: Date.now() - this.takeOff});
-        console.log(this.state.flightTime.toString());
+        // console.log(this.state.flightTime.toString());
         setTimeout(this.run.bind(this),8);
     }
 }
