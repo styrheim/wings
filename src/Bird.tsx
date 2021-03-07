@@ -9,7 +9,8 @@ export interface BirdState{
     wingScale: number;
     position:  number;
     speed: number;
-    acceleration: number
+    acceleration: number;
+    lastUpdate: number
 }
 
 
@@ -22,7 +23,8 @@ export class Bird extends React.Component<BirdProps,BirdState>{
             wingScale: Math.cos(this.props.flightTime),
             position: 100,
             speed: 0,
-            acceleration: -0.1
+            acceleration: -0.1,
+            lastUpdate: this.props.flightTime
         }
     }
 
@@ -34,6 +36,7 @@ export class Bird extends React.Component<BirdProps,BirdState>{
         let wingColor = wingScale>0 ? this.wingColorBelow : this.wingColorAbove;
         let translate = 116*(1-wingScale);
         let wobble = translate * (-0.06);
+        //TODO set lastUpdate;
         return <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
