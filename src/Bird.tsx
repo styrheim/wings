@@ -5,20 +5,24 @@ export interface BirdProps {
     period: number;     // duration in ms of each wing beat.
     width: number       // width of the SVG image - wider than the bird.
 }
-export interface Birdstate{
-    position: 0;
-    speed: 0;
-    acceleration: -0.01
+export interface BirdState{
+    wingScale: number;
+    position:  number;
+    speed: number;
+    acceleration: number
 }
 
 
-export class Bird extends React.Component<BirdProps>{
+export class Bird extends React.Component<BirdProps,BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
     constructor(props:BirdProps) {
         super(props);
         this.state = {
-            wingScale: Math.cos(this.props.flightTime)
+            wingScale: Math.cos(this.props.flightTime),
+            position: 100,
+            speed: 0,
+            acceleration: -0.1
         }
     }
 
@@ -35,10 +39,10 @@ export class Bird extends React.Component<BirdProps>{
         version="1.1"
         id="svg9"
         width={this.props.width}
-        viewBox={"-50 0 300 300"}>
+        viewBox={"-50 0 300 800"}>
         <g
             id="layer1"
-            transform={`translate(-25,${20 + wobble})`}>
+            transform={`translate(-25,${20 + wobble + this.state.position})`}>
             {/* <!-- body --> */}
             {"<!-- body debug comment -->"}
             <path
