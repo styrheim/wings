@@ -21,7 +21,7 @@ export class Bird extends React.Component<BirdProps,BirdState>{
         this.position = 100;
         this.state = {position: this.position};
         this.speed = 0;
-        this.acceleration = -0.5;
+        this.acceleration = +0.00000005; // which is downwards
         this.lastUpdate = this.props.flightTime;
     }
 
