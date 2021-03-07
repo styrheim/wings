@@ -3,7 +3,12 @@ import React from 'react';
 export interface BirdProps {
     flightTime: number; // ms since take-off
     period: number;     // duration in ms of each wing beat.
-    width: number       // width of the SVG imgae - wider than the bird.
+    width: number       // width of the SVG image - wider than the bird.
+}
+export interface Birdstate{
+    position: 0;
+    speed: 0;
+    acceleration: -0.01
 }
 
 
