@@ -20,7 +20,7 @@ class App extends React.Component<AppProps, AppState>{
         this.takeOff = Date.now();
         window.addEventListener('keydown', (e) => {
             if (e.key === "0") {
-                this.running = false;
+                this.running = ! this.running;
             }
         });
         this.run();
