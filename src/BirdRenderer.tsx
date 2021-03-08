@@ -18,7 +18,7 @@ export class BirdRenderer extends React.Component<BirdRendererProps> {
             version="1.1"
             id="svg9"
             width={this.props.width}
-            viewBox={"-50 0 300 800"}>
+            viewBox={"-50 0 1000 700"}>
             <g
                 id="layer1"
                 transform={`translate(-25,${this.props.position + wobble})`}>

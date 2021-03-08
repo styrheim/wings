@@ -34,7 +34,7 @@ class App extends React.Component<AppProps, AppState>{
         return(
         <div className="App" >
             <div>
-                <Bird flightTime={this.state.flightTime} period={500} width={200}/>
+                <Bird flightTime={this.state.flightTime} period={500} width={800}/>
             </div>
         </div>);
     }
