@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export interface BirdRendererProps {
     position:  number,
     wingScale: number,
