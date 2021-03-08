@@ -16,11 +16,11 @@ export class Bird extends React.Component<BirdProps>{
         super(props);
         this.state = {position: 100};
         this.speed = 0;
-        this.acceleration = +0.00000005; // which is downwards
+        this.acceleration = +0.000005; // which is downwards
         this.lastUpdate = this.props.flightTime;
         window.addEventListener('keydown', (e) => {
             if (e.key === " ") {
-                this.speed = this.speed - 5;
+                this.speed = this.speed - 0.05;
             }
         });
     }
