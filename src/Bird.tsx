@@ -37,10 +37,15 @@ export class Bird extends React.Component<BirdProps>{
         this.speed = this.speed + (interval/1000)*this.acceleration;
         console.log("speed: " + this.speed.toString() + "position : " + this.position.toString());
         this.position = this.position + (interval/1000)*this.speed;
-        // Should round position and wingScale, to supress rendering of
+        // Should round position and wingScale, to suppress rendering of
         // inperceptibly small changes. TODO
-        // In thee unlikely case that changed flightTime does not change neither position nor wingScale,
+        // In the unlikely case that changed flightTime does not change neither position nor wingScale,
         // BirdRenderer will not render.
-        return <BirdRenderer position={this.position} wingScale={wingScale} width={this.props.width}/>;
+        let positionRounding = 10;
+        let roundedPosition = Math.round(this.position*positionRounding) / positionRounding;
+        let scaleRounding = 1000;
+        let roundedWingSScale = Math.round(wingScale*scaleRounding) / scaleRounding;
+        // Also round width, if there will ever be small width changes.
+        return <BirdRenderer position={roundedPosition} wingScale={roundedWingSScale} width={this.props.width}/>;
     }
 }
