@@ -4,7 +4,6 @@ import {BirdRenderer} from "./BirdRenderer";
 export interface BirdProps {
     flightTime: number; // ms since take-off
     period: number;     // duration in ms of each wing beat.
-    width: number       // width of the SVG image - wider than the bird.
 }
 
 export class Bird extends React.Component<BirdProps>{
@@ -46,6 +45,6 @@ export class Bird extends React.Component<BirdProps>{
         let scaleRounding = 1000;
         let roundedWingSScale = Math.round(wingScale*scaleRounding) / scaleRounding;
         // Also round width, if there will ever be small width changes.
-        return <BirdRenderer position={roundedPosition} wingScale={roundedWingSScale} width={this.props.width}/>;
+        return <BirdRenderer position={roundedPosition} wingScale={roundedWingSScale}/>;
     }
 }

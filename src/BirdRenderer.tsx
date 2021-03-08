@@ -2,8 +2,7 @@ import React from 'react';
 
 export interface BirdRendererProps {
     position:  number,
-    wingScale: number,
-    width:     number
+    wingScale: number
 }
 export class BirdRenderer extends React.Component<BirdRendererProps> {
     readonly wingColorBelow = "#e0efff";
@@ -13,12 +12,7 @@ export class BirdRenderer extends React.Component<BirdRendererProps> {
         let translate = 116*(1-this.props.wingScale);
         let wobble = translate * (-0.06);
 
-        return <svg
-            xmlns="http://www.w3.org/2000/svg"
-            version="1.1"
-            id="svg9"
-            width={this.props.width}
-            viewBox={"-50 0 1000 700"}>
+        return (
             <g
                 id="layer1"
                 transform={`translate(-25,${this.props.position + wobble})`}>
@@ -105,6 +99,6 @@ export class BirdRenderer extends React.Component<BirdRendererProps> {
                     transform={`translate(0,${translate}) scale(1,${this.props.wingScale})`}
                     id="wing"/>
             </g>
-        </svg>;
+        );
     }
 }

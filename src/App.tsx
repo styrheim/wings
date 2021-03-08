@@ -33,9 +33,14 @@ class App extends React.Component<AppProps, AppState>{
         // console.log(this.state.flightTime.toString());
         return(
         <div className="App" >
-            <div>
-                <Bird flightTime={this.state.flightTime} period={500} width={800}/>
-            </div>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                id="svg9"
+                viewBox={"-50 0 1000 700"}
+                width={800}>
+                <Bird flightTime={this.state.flightTime} period={500}/>
+            </svg>
         </div>);
     }
 
