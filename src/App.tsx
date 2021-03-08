@@ -10,6 +10,7 @@ interface AppState{
 
 class App extends React.Component<AppProps, AppState>{
     takeOff: number; // ms since start of flight
+    running = true;
     state = {
         flightTime: 0
     };
@@ -17,6 +18,11 @@ class App extends React.Component<AppProps, AppState>{
         super(props);
         console.log("App.constructor")
         this.takeOff = Date.now();
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "0") {
+                this.running = false;
+            }
+        });
         this.run();
     }
 
@@ -36,7 +42,9 @@ class App extends React.Component<AppProps, AppState>{
         // console.log(this.state.flightTime.toString());
         this.setState({flightTime: Date.now() - this.takeOff});
         // console.log(this.state.flightTime.toString());
-        setTimeout(this.run.bind(this),8);
+        if(this.running){
+            setTimeout(this.run.bind(this),2000);
+        }
     }
 }
 
