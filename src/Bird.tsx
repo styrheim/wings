@@ -6,15 +6,15 @@ export interface BirdProps {
     width: number       // width of the SVG image - wider than the bird.
 }
 export interface BirdState{
-    position: number;
+    position: number;   //
 }
 
 export class Bird extends React.Component<BirdProps,BirdState>{
     readonly wingColorBelow = "#e0efff";
     readonly wingColorAbove = "#650fa8";
-    position= 0;
-    speed: number;
-    acceleration: number;
+    position= 0;            // px
+    speed: number;          // px/s
+    acceleration: number;   // px/s
     lastUpdate: number;
     constructor(props:BirdProps) {
         super(props);
@@ -24,7 +24,7 @@ export class Bird extends React.Component<BirdProps,BirdState>{
         this.lastUpdate = this.props.flightTime;
         window.addEventListener('keydown', (e) => {
             if (e.key === " ") {
-                this.speed = this.speed - 5000;
+                this.speed = this.speed - 5;
             }
         });
     }
@@ -41,9 +41,9 @@ export class Bird extends React.Component<BirdProps,BirdState>{
         let translate = 116*(1-wingScale);
         let wobble = translate * (-0.06);
         let interval = this.props.flightTime - this.lastUpdate;
-        this.speed = this.speed + interval*this.acceleration;
+        this.speed = this.speed + (interval/1000)*this.acceleration;
         console.log("speed: " + this.speed.toString() + "position : " + this.position.toString());
-        this.position = this.state.position + interval*this.speed;
+        this.position = this.position + (interval/1000)*this.speed;
 
         return <svg
             xmlns="http://www.w3.org/2000/svg"
